@@ -5,7 +5,6 @@ import pathlib
 import random
 import numpy as np
 import openpyxl
-from tabulate import tabulate
 
 EXCEL_TEMPLATE = pathlib.Path(__file__).parent / 'assets' / 'schulte_template.xlsx'
 START_COLUMN = 2
@@ -14,7 +13,7 @@ LINE_ONE_START_ROW = 2
 LINE_TWO_START_ROW = 12
 
 
-def generate_schulte_grid(level=5):
+def generate_single_schulte_table(level=5):
     size_of_schulte = level
     li = [i for i in range(1, size_of_schulte * size_of_schulte + 1)]
     random.shuffle(li)
@@ -22,17 +21,10 @@ def generate_schulte_grid(level=5):
     return arr
 
 
-def write_single_table(arr, tablefmt='html'):
-    table = tabulate(arr, [], tablefmt=tablefmt)
-    print(table)
-    with open('schulte_grid.html', 'w', encoding="utf-8") as f:
-        f.write(str(table))
-
-
 def write_excel():
     file = openpyxl.load_workbook(EXCEL_TEMPLATE)
     sheet = file.worksheets[0]
-    arr_list = [generate_schulte_grid(5) for i in range(6)]
+    arr_list = [generate_single_schulte_table(5) for i in range(6)]
     for square_no, square_values in enumerate(arr_list):
         start_column = START_COLUMN
         if square_no < 3:
