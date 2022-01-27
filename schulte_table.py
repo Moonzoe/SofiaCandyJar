@@ -1,6 +1,3 @@
-"""
-Script to generate 5*5 Schulte Table base on an excel template
-"""
 import pathlib
 import random
 import numpy as np
@@ -24,18 +21,18 @@ def generate_single_schulte_table(level=5):
 def write_excel():
     file = openpyxl.load_workbook(EXCEL_TEMPLATE)
     sheet = file.worksheets[0]
-    arr_list = [generate_single_schulte_table(5) for i in range(6)]
+    arr_list = [generate_single_schulte_table(5) for _ in range(8)]
     for square_no, square_values in enumerate(arr_list):
         start_column = START_COLUMN
-        if square_no < 3:
+        if square_no < 4:
             start_row = LINE_ONE_START_ROW
         else:
             start_row = LINE_TWO_START_ROW
         for row_index, row in enumerate(square_values):
             for column_index, cell_value in enumerate(row):
                 sheet.cell(row=row_index + start_row,
-                           column=column_index + start_column + DELTA_COLUMN * (square_no % 3)).value = cell_value
-    file.save('the_schulte_table.xlsx')
+                           column=column_index + start_column + DELTA_COLUMN * (square_no % 4)).value = cell_value
+    file.save('first_square.xlsx')
 
 
 if __name__ == '__main__':
