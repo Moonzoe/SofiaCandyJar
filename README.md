@@ -1,4 +1,10 @@
 # Sofia's Candy Jar
 Candy Jar for my Sofia or just for me. :D 
 
-1. schulte_table.py, to generate a 5*5 schulte table base on an excel template
+## schulte_table.py
+Script to generate 5*5 schulte tables base on an excel template. 
+我很认真 —— I'm focusing
+
+![](https://github.com/Moonzoe/SofiaCandyJar/blob/main/assets/schulte_table.png)
+
+
